@@ -1,0 +1,30 @@
+# Segredos e Configurações Sensíveis
+.env
+*.env
+!.env.example
+
+# Ambientes Virtuais e Caches
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Dados, Modelos e Bancos de Dados
+*.db
+data/*.db
+models/*.joblib
+
+# Logs, Temporários e Testes Locais
+*.log
+testa_*.py
+saida.txt
+reports/*.json
+
+# IDEs e Sistema Operacional
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

@@ -1,0 +1,156 @@
+{
+  "treinado_em": "2026-10-31T23:22:01+00:00",
+  "n_teste": 82,
+  "n_extras": {
+    "categoria": 0,
+    "prioridade": 0
+  },
+  "categoria": {
+    "melhor_modelo": "logistic_regression",
+    "n_treino": 326,
+    "validacao_cruzada": {
+      "logistic_regression": {
+        "accuracy_media": 0.9448484848484849,
+        "f1_macro_media": 0.9450034676778862,
+        "f1_macro_desvio": 0.03282635318281158
+      },
+      "linear_svc_calibrado": {
+        "accuracy_media": 0.9356177156177157,
+        "f1_macro_media": 0.9357179554367789,
+        "f1_macro_desvio": 0.022347871933938192
+      },
+      "multinomial_nb": {
+        "accuracy_media": 0.9202797202797204,
+        "f1_macro_media": 0.9203381558883545,
+        "f1_macro_desvio": 0.022341493143242304
+      },
+      "random_forest": {
+        "accuracy_media": 0.914079254079254,
+        "f1_macro_media": 0.9145465723717081,
+        "f1_macro_desvio": 0.02763091702468342
+      }
+    },
+    "holdout": {
+      "accuracy": 0.9390243902439024,
+      "f1_macro": 0.9395981377113453,
+      "por_classe": {
+        "Automação": {
+          "precision": 0.9629629629629629,
+          "recall": 1.0,
+          "f1": 0.9811320754716981,
+          "support": 26
+        },
+        "Elétrica": {
+          "precision": 0.9615384615384616,
+          "recall": 0.8620689655172413,
+          "f1": 0.9090909090909091,
+          "support": 29
+        },
+        "Mecânica": {
+          "precision": 0.896551724137931,
+          "recall": 0.9629629629629629,
+          "f1": 0.9285714285714286,
+          "support": 27
+        }
+      },
+      "matriz_confusao": {
+        "labels": [
+          "Automação",
+          "Elétrica",
+          "Mecânica"
+        ],
+        "matriz": [
+          [
+            26,
+            0,
+            0
+          ],
+          [
+            1,
+            25,
+            3
+          ],
+          [
+            0,
+            1,
+            26
+          ]
+        ]
+      }
+    }
+  },
+  "prioridade": {
+    "melhor_modelo": "logistic_regression",
+    "n_treino": 326,
+    "validacao_cruzada": {
+      "logistic_regression": {
+        "accuracy_media": 1.0,
+        "f1_macro_media": 1.0,
+        "f1_macro_desvio": 0.0
+      },
+      "linear_svc_calibrado": {
+        "accuracy_media": 0.9969230769230769,
+        "f1_macro_media": 0.9970327366553782,
+        "f1_macro_desvio": 0.005934526689243702
+      },
+      "multinomial_nb": {
+        "accuracy_media": 0.9876923076923078,
+        "f1_macro_media": 0.9881166248698259,
+        "f1_macro_desvio": 0.011171524323121337
+      },
+      "random_forest": {
+        "accuracy_media": 0.9662470862470863,
+        "f1_macro_media": 0.9670196885986361,
+        "f1_macro_desvio": 0.019744259666863904
+      }
+    },
+    "holdout": {
+      "accuracy": 1.0,
+      "f1_macro": 1.0,
+      "por_classe": {
+        "Alta": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 25
+        },
+        "Baixa": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 24
+        },
+        "Média": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 33
+        }
+      },
+      "matriz_confusao": {
+        "labels": [
+          "Alta",
+          "Baixa",
+          "Média"
+        ],
+        "matriz": [
+          [
+            25,
+            0,
+            0
+          ],
+          [
+            0,
+            24,
+            0
+          ],
+          [
+            0,
+            0,
+            33
+          ]
+        ]
+      }
+    }
+  }
+}

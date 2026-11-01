@@ -1,0 +1,409 @@
+texto,categoria,prioridade
+OPERADOR INFORMA QUE MANCAL DO EXAUSTOR COM RUIDO ANORMAL E VIBRACAO NA AREA DE EXPEDICAO,Mecânica,Média
+Na área de expedição: painel elétrico da linha 2 soltando fumaça,Elétrica,Alta
+Agendar VFD da bomba (parametrização) para reivsão da lógica de baixa criticidade. no setor de utilidades,Automação,Baixa
+AGENDAR MANAL DO EXAUSTOR COM TROCA PREVENTIVA AGENDADA. NA LINHA 3,Mecânica,Baixa
+Operador informa que corrente do elevador de canecas com desgaste visível após a troca de turno,Mecânica,Média
+CORRENTE DO ELEVADOR DE CANECAS COM RUÍDO ANORMAL E VIBRAÇÃO NO SETOR DE ENVASE,Mecânica,Média
+Cabo de alimentação do motor para termografia preventiva no turno da noite,Elétrica,Baixa
+Operador informa que sistema SCADA da planta com falha crítica e risco de acidnte no turno da noite,Automação,Alta
+CLP da linha de envase para inclusão de novo alarme na IHM após a última manutenção,Automação,Baixa
+Agendar modulo de I/O remoto para backup do programa agendado. no turno da noite,Automação,Baixa
+Motor esquentando e desarmando o térmico no setor de utilidades,Elétrica,Média
+Operador informa que bomba de oleo aquecendo acima do normal no turno da manha,Mecânica,Média
+Operador informa que sistema SCADA da planta com sensor falhando de vez em quando no setor de utilidades,Automação,Média
+Motor desarmando com cheiro de queimado na linha 3,Elétrica,Alta
+Contator da bomba para medicao de isolamento periodica,Elétrica,Baixa
+Apos a troca de turno: disjuntor do motor principal com ruido de zumbido,Elétrica,Média
+VFD da esteira com aquecimento acima do normal nos terminais no setor de envase,Elétrica,Média
+Na area de expedicao: motor trifasico da bomba apresentando risco de choque eletrico,Elétrica,Alta
+Redutor da esteira transportadora para inspeção preventiva mensal no turno da manhã,Mecânica,Baixa
+No setor de envase: rele termico do exaustor com queda de tesao,Elétrica,Média
+Operador informa que corrente do elevador de canecas perdendo pressão aos poucos durante a partida,Mecânica,Média
+Vibração e queda de rotação no motor após a última manutenção,Elétrica,Média
+Transmissor de pressão 4-20mA perdendo comunicação de forma intermitente após a última manutenção,Automação,Média
+Operador informa que rele termico do exaustor soltando fumaca na area de expedicao,Elétrica,Alta
+Operador informa que IHM da prensa com leitura 4-20mA oscilando após a última manutenção,Automação,Média
+Válvula proporcional com sensor falhando de vez em quando durante a partida,Automação,Média
+Redutor da esteira transportadora travou e parou a linha inteira desde ontem,Mecânica,Alta
+Transformador da subestaaco com cabo exposto e risco de choque,Elétrica,Alta
+OPERADOR INFORMA QUE VFD DA ESTEIRA OSCILANDO A CORRENTE DESDE ONTEM,Elétrica,Média
+Agendar redutor da esteira transportadora para lubrificação programada. no turno da noite,Mecânica,Baixa
+Agendar VFD da esteira para reaperto de bornes programado. no turno da manhã,Elétrica,Baixa
+No setor de utilidades: mancal do exaustor soltando fumaça por atrito excessivo,Mecânica,Alta
+Preventiva: rolamento do motor da esteira para ajuste de alinhamento preventivo apos a troca de turno,Mecânica,Baixa
+AGENDAR CONTATOR DA BOMBA PARA IDENTIFICAÇÃO DOS CIRCUITOS. APÓS A ÚLTIMA MANUTENÇÃO,Elétrica,Baixa
+Preventiva: encoder do eixo principal para inclusão de novo alarme na IHM durante a partida,Automação,Baixa
+Preventiva: servo drive da embaladora para revisao da logica de baixa criticidade apos a ultima manutencao,Automação,Baixa
+Operador informa que esteira da linha 1 trabalhando com vazamento leve de óleo após a troca de turno,Mecânica,Média
+Operador informa que servo drive da embaladora com alarme de falha de encoder no turno da manhã,Automação,Média
+Favor verificar: compressor de ar quebrou e ha risco de acidente. na linha 3,Mecânica,Alta
+Rede Profibus do painel com comando travado e maquina operando sem controle,Automação,Alta
+Favor verificar: modulo de I/O remoto com leitura 4-20mA oscilando. na area de expedicao,Automação,Média
+Motor esquentando e desarmando o térmico no turno da noite,Elétrica,Média
+AGENDAR QUADRO DE DISTRIBUIÇÃO PARA TERMOGRAFIA PREVENTIVA. NO SETOR DE ENVASE,Elétrica,Baixa
+Favor verificar: redutor da esteira transportadora travou e parou a linha inteira. após a troca de turno,Mecânica,Alta
+Operador informa que redutor da esteira transportadora quebrou e ha risco de acidente durante a partida,Mecânica,Alta
+Operador informa que IHM da prensa com alarme de falha de encoder no turno da manha,Automação,Média
+Agendar cilindro hidraulico para limpeza e inspecao de rotina. apos a troca de turno,Mecânica,Baixa
+Esteira parando sem aviso durante a partida,Automação,Média
+Operador informa que paniel eletrico da linha 2 com fusivel queimando repetidamente durante a partida,Elétrica,Média
+Quadro de distribuição para identificação dos circuitos no turno da manhã,Elétrica,Baixa
+Preventiva: fonte 24V do painel com troca preventiva de lâmpadas após a troca de turno,Elétrica,Baixa
+Agendar esteira da linha 1 para reaperto de parafusos na próxima parada. na linha 3,Mecânica,Baixa
+APÓS A TROCA DE TURNO: BOMBA DE ÓLEO COM VAZAMENTO DE GÁS REFIGERANTE,Mecânica,Alta
+Rolamento do motor da esteira trabalhando com vazamento leve de óleo desde ontem,Mecânica,Média
+Maquina parando e reiniciando na area de expedicao,Mecânica,Média
+Inversor dando falha na partida do motor após a última manutenção,Automação,Média
+Operador informa que esteira da linha 1 com ruído anormal e vibração desde ontem,Mecânica,Média
+Operador informa que esteira da linha 1 com folga excessiva no eixo durante a partida,Mecânica,Média
+Preventiva: bomba de óleo para inspeção preventiva mensal no turno da manhã,Mecânica,Baixa
+Agendar transmisor de pressão 4-20mA para calibração periódica. no turno da manhã,Automação,Baixa
+Favor verificar: redutor da esteira transportadora com ruído anormal e vibração. desde ontem,Mecânica,Média
+Operador informa que fonte 24V do painel com fusível queimando repetidamente durante a partida,Elétrica,Média
+Preventiva: válvula pneumática para lubrificação programada duarnte a partida,Mecânica,Baixa
+PREVENTIVA: DISJUNTOR DO MOTOR PRINCIPAL PARA REAPERTO DE BORNES PROGRAMADO NO SETOR DE UTILIDADES,Elétrica,Baixa
+Favor verificar: vlvula proporcional perdeu comunicação e parou a linha inteira.,Automação,Alta
+Fonte 24V do painel com queda de tensao apos a ultima manutencao,Elétrica,Média
+SENSOR E MOTOR SEM RESPOSTA NO TURNO DA NOITE,Automação,Média
+Compressor de ar quebrou e há risco de acidetne no setor de utilidades,Mecânica,Alta
+Preventiva: redutor da esteira transportadora para reaperto de parafusos na proxima parada no setor de envase,Mecânica,Baixa
+Agendar sensor fotoeletrico da seladora para calibracao periodica. desde ontem,Automação,Baixa
+Operador informa que disjuntor do motor principal em curto-circuito derrubando tudo,Elétrica,Alta
+Favor verificar: sensor fotoeletrico da seladora perdeu comunicacao e parou a linha inteira. no setor de envase,Automação,Alta
+Desde ontem: acoplamento da bomba hidráulica com folga excessiva no eixo,Mecânica,Média
+Desde ontem: contator da bomba oscilando a corrente,Elétrica,Média
+Agendar contator da bomba para inspecao eletrica de rotina. no turno da manha,Elétrica,Baixa
+Correia do ventilador para reaperto de parafusos na próxima parada durante a partida,Mecânica,Baixa
+Favor verificar: mancal do exaustor com desgaste visivel.,Mecânica,Média
+Durante a partida: acoplamento da bomba hidráulica com vazamento de gás refrigerante,Mecânica,Alta
+Inversor dando falha na partida do motor no setor de utilidades,Elétrica,Média
+Favor verificar: IHM da prensa perdeu comunicação e parou a linha inteira. após a última manutenção,Automação,Alta
+INVERSOR DANDO FALHA NA PARTIDA DO MOTOR NA LINHA 3,Automação,Média
+Favor verificar: CLP da linha de evnase perdeu comunicação e parou a linha inteira. na área de expedição,Automação,Alta
+Após a última manutenção: módulo de I/O remoto com falha crítica e risco de acidente,Automação,Alta
+Agendar rolamento do motor da esteira para reaperto de parafusos na próxima parada. na linha 3,Mecânica,Baixa
+Mancal do exaustor com troca preventiva agendada no turno da manhã,Mecânica,Baixa
+Agendar disjuntor do motor principal com troca preventiva de lampadas. durante a partida,Elétrica,Baixa
+Esteira da linha 1 com vazamento de óleo no piso e risco de queda no turno da noite,Mecânica,Alta
+Maquina parando e reinicaindo no turno da noite,Mecânica,Média
+Operador infoma que acoplamento da bomba hidraulica com folga excessiva no eixo no turno da manha,Mecânica,Média
+Apos a ultima manutencao: sistema SCADA da planta com leitura 4-20mA oscilando,Automação,Média
+No setor de envase: tomada industrial do setor de embalagem com cheiro de queimado e faíscas,Elétrica,Alta
+Ventilador parando de vez em quando desde ontem,Elétrica,Média
+Válvula pneumática quebrou e há risco de acidente desde ontem,Mecânica,Alta
+Favor verificar: contator da bomba pegou fogo.,Elétrica,Alta
+No turno da manhã: corrente do elevador de canecas com peça solta e risco para o operador,Mecânica,Alta
+Máquina parando e reiniciando no setor de envase,Mecânica,Média
+FAVOR VERIFICAR: MOTOR TRIFÁSICO DA BOMBA EM CURTO-CIRCUITO DERRUBANDO TUDO. NA ÁREA DE EXPEDIÇÃO,Elétrica,Alta
+Operador informa que iluminação da área de envase com queda de tensão após a troca de turno,Elétrica,Média
+Preventiva: sistema SCADA da planta para backup do programa agendado apos a ultima manutencao,Automação,Baixa
+Equipamento desligando sozinho na area de expedicao,Automação,Média
+Preventiva: sistema SCADA da planta para ajuste de parametros de rotina,Automação,Baixa
+Transformador da subestação soltando fumaça,Elétrica,Alta
+Favor verificar: acoplamento da bomba hidraulica aquecendo acima do normal. no setor de utilidades,Mecânica,Média
+Favor verificar: mancal do exaustor soltando fumaca por atrito excessivo. no setor de envase,Mecânica,Alta
+No turno da noite: bomba de óleo sltando fumaça por atrito excessivo,Mecânica,Alta
+Agendar redutor da esteira transportadora para lubrificação programada. após a última manutenção,Mecânica,Baixa
+Corrente do elevador de canecas perdendo pressão aos poucos no setor de utilidades,Mecânica,Média
+Agendar válvula proporcional para backup do programa agendado. na linha 3,Automação,Baixa
+Preventiva: correia do ventilador para lubrificação programada no turno da noite,Mecânica,Baixa
+Agendar acoplamento da bomba hidráulica com troca preventiva agendada. após a última manutenção,Mecânica,Baixa
+Favor verificar: fonte 24V do painel com fusivel queimando repetidamente. no setor de envase,Elétrica,Média
+Motor desarmando no turno da manhã,Elétrica,Média
+Na linha 3: IHM da prensa com comando travado e máquina oeprando sem controle,Automação,Alta
+Sensor fotoelétrico da seladora com leitura 4-20mA oscilando após a última manutenção,Automação,Média
+Favor verificar: VFD da bomba (parametrização) perdeu comunicação e parou a linha inteira. na linha 3,Automação,Alta
+NO SETOR DE UTILIDADES: MÓDULO DE I/O REMOTO COM SENSOR FALHANDO DE VEZ EM QUADNO,Automação,Média
+Painel esquentando e motor travando no setor de utilidades,Elétrica,Média
+Favor verificar: IHM da prensa perdeu comunicação e parou a linha inteira. desde ontem,Automação,Alta
+Redutor da esteira transportadora perdendo pressao aos poucos,Mecânica,Média
+Desde ontem: valvula pneumatica com folga excessiva no eixo,Mecânica,Média
+Operador informa que sensor fotoelétrico da seladora com sensor falhando de vez em quando no setor de utilidades,Automação,Média
+No turno da manhã: motor trifásico da bomba com cabo exposto e risco de choque,Elétrica,Alta
+Sensor fotoelétrico da seladora perdendo comunicação de forma intermitente desde ontem,Automação,Média
+Agendar quadro de distribuição para identificação dos circuitos. no setor de envase,Elétrica,Baixa
+Esteira da linha 1 quebrou e há risco de acidente no turno da noite,Mecânica,Alta
+Agendar bomba de óleo para inspeção preventiva mensal. durante a partida,Mecânica,Baixa
+Durante a partida: contator da bomba com cheiro de queimado e faíscas,Elétrica,Alta
+Compressor de ar para lubrificação programada no setor de utilidades,Mecânica,Baixa
+Operador informa que VFD da bomba (parametrização) perdeu comunicação e parou a linha inteira na área de epedição,Automação,Alta
+Preventiva: cabo de alimnetacao do motor para reaperto de bornes programado apos a ultima manutencao,Elétrica,Baixa
+Operador informa que rede Profibus do painel com comando travado e máquina operando sem controle no turno da manhã,Automação,Alta
+VFD da esteira para medição de isolamento periódica na área de expedição,Elétrica,Baixa
+Favor verificar: cabo de alimentação do motor oscilando a corrente. no setor de utilidades,Elétrica,Média
+Agendar servo drive da embaladora para revisão da lógica de baixa criticidade.,Automação,Baixa
+Válvula proporcional para inclusão de novo alarme na IHM no turno da noite,Automação,Baixa
+Favor verificar: rolamento do motor da esteira com vazamento de óleo no piso e risco de queda. no setor de utilidades,Mecânica,Alta
+OPERADOR INFORMA QUE ILUMINAÇÃO DA ÁREA DE ENVASE COM QUEDA DE TENSÃO NA ÁREA DE EXPEDIÇÃO,Elétrica,Média
+Operador informa que transformador da subestacao em curto-circuito derrubando tudo na linha 3,Elétrica,Alta
+Após a última manutenção: tomada industrial do setor de embalagem apresentando risco de choque elétrico,Elétrica,Alta
+Agendar quadro de distribuição para identificação dos circuitos. no setor de utilidades,Elétrica,Baixa
+Equipamento desligando sozinho na linha 3,Automação,Média
+Agendar compressor de ar para inspecao preventiva mensal. no turno da manha,Mecânica,Baixa
+Agendar painel eletrico da linha 2 com troca preventiva de lampadas. no turno da noite,Elétrica,Baixa
+Operador informa que servo drive da embaladora com alarme de falha de encoder no turno da noite,Automação,Média
+Favor verificar: IHM da prensa travando e reiniciando sozinho. no setor de utilidades,Automação,Média
+No setor de utilidades: disjuntor do motor principal com ruído de zumbido,Elétrica,Média
+No turno da noite: fonte 24V do painel apresentando risco de choque elétrico,Elétrica,Alta
+Operador informa que rolamento do motor da esteira perdendo pressão aos poucos no setor de envase,Mecânica,Média
+Favor verificar: correia do venitlador com peca solta e risco para o operador. no setor de utilidades,Mecânica,Alta
+Painel esquentndo e motor travando no setor de envase,Mecânica,Média
+DESDE ONTEM: CABO DE ALIMENTAÇÃO DO MOTOR COM AQUECIMENTO ACIMA DO NORMAL NOS TERMINAIS,Elétrica,Média
+Bomba de óleo para ajuste de alinhamento preventivo após a última manutenção,Mecânica,Baixa
+VENTILADOR PARANDO DE VEZ EM QUANDO NA LINHA 3,Mecânica,Média
+Favor verificar: servo drive da embaladora com falha criitca e risco de acidente. no turno da manha,Automação,Alta
+Preventiva: relé térmico do exaustor com troca preventiva de lâmpadas desde ontem,Elétrica,Baixa
+Eixo do misturador para inspeção preventiva mensal no turno da noite,Mecânica,Baixa
+Quadro de distribuição com ruído de zumbido após a última manutenção,Elétrica,Média
+Mancal do exaustor com vazamento de gás refrigerante após a troca de turno,Mecânica,Alta
+Operador informa que corrente do elevador de canecas com vazamento de gás refrigerante no turno da manhã,Mecânica,Alta
+Contator da bomba com cabo exposto e risco de choque na area de expedicao,Elétrica,Alta
+Agendar CLP da linha de envase para revisão da lógica de baixa criticidade. no turno da noite,Automação,Baixa
+Equipamento desligando sozinho no turno da noite,Elétrica,Média
+Operador informa que disjuntor do motor principal em curto-circuito derrubando tudo apos a ultima manutencao,Elétrica,Alta
+IHM da prensa para revisão da lógica de baixa criticidade,Automação,Baixa
+Favor verificar: servo drive da embaladora com falso sinal de emergência. após a última manutenção,Automação,Alta
+Operador informa que tomada industrial do setor de embalagem com aquecimento acima do normal nos terminais durante a partida,Elétrica,Média
+Cilindro hidraulico travou e parou a linha inteira na linha 3,Mecânica,Alta
+Transformador da subestação oscilando a corrente durante a partida,Elétrica,Média
+Favor verificar: contator da bomba oscilando a corrente. durante a partida,Elétrica,Média
+Preventiva: cotnator da bomba com troca preventiva de lampadas durante a partida,Elétrica,Baixa
+Favor verificar: quadro de distribuição com cheiro de queimado e faíscas. no setor de envase,Elétrica,Alta
+Operador informa que corrente do elevador de canecas travou e parou a linha inteira,Mecânica,Alta
+No setor de utilidades: eixo do misturador com desgaste visível,Mecânica,Média
+Preventiva: iluminacao da area de envase com troca preventiva de lamapdas,Elétrica,Baixa
+Após a última manutenção: bomba de óleo quebrou e há risco de acidente,Mecânica,Alta
+Agendar contator da bomba para medicao de isolamento periodica. apos a troca de turno,Elétrica,Baixa
+Operador informa que IHM da prensa acionou parada de emergência sem causa aparente na área de expedição,Automação,Alta
+OPERADOR INFORMA QUE ESTEIRA DA LINHA 1 QUEBROU E HA RISCO DE ACIDENTE NA AREA DE EXPDEICAO,Mecânica,Alta
+Inversor dando falha na partida do motor no turno da manhã,Automação,Média
+Favor verificar: mancal do exaustor com ruído anormal e vibração. no setor de envase,Mecânica,Média
+Redtor da esteira transportadora com troca preventiva agendada desde ontem,Mecânica,Baixa
+ROLAMENTO DO MOTOR DA ESTEIRA PARA REAPERTO DE PARAFUSOS NA PROXIMA PARADA NO TURNO DA NOITE,Mecânica,Baixa
+Tomada industrial do setor de embalagem com troca preventiva de lâmpadas,Elétrica,Baixa
+PREVENTIVA: FONTE 24V DO PAINEL COM TROCA PREVENTIVA DE LÂMPADAS DURANTE A PARTIDA,Elétrica,Baixa
+Favor verificar: motor trifásico da bomba com cheiro de queimado e faíscas.,Elétrica,Alta
+Motor trifásico da bomba com fusível queimando repetidamente,Elétrica,Média
+Favor verificar: redutor da esteira transportadora trabalhando com vazamento leve de oleo.,Mecânica,Média
+Vibração e queda de rotação no motor no turno da noite,Mecânica,Média
+Operador informa que encoder do eixo principal com leitura 4-20mA oscilando no setor de envase,Automação,Média
+Operador informa que painel elétrico da linha 2 apresentando risco de choque elétrico desde ontem,Elétrica,Alta
+Favor verificar: transmissor de pressão 4-20mA perdeu comunicação e parou a linha inteira. desde ontem,Automação,Alta
+Motor esquentando e desarmando o termico na area de expedicao,Mecânica,Média
+Agendar motor trifasico da bomba para inspecao eletrica de rotina. durante a partida,Elétrica,Baixa
+Preventiva: motor trifásico da bomba para identificação dos circuitos durante a patrida,Elétrica,Baixa
+CLP da linha de envase para revisão da lógica de baixa criticidade no turno da noite,Automação,Baixa
+Favor verificar: correia do ventilador com vazamento de gás refrigerante. no turno da manhã,Mecânica,Alta
+Operador informa que IHM da prensa com comando travado e máquina operando sem controle no setor de envase,Automação,Alta
+Na área de expedição: CLP da linha de envase com falha crítica e risco de acidente,Automação,Alta
+Ventilador parando de vez em quando no turno da manha,Elétrica,Média
+Favor verificar: iluminacao da area de envase em curto-circuito derrubando tudo. no setor de envase,Elétrica,Alta
+Sensor e motor sem resposta no setor de envase,Automação,Média
+Motor desarmando com cheiro de queimado durante a partida,Elétrica,Alta
+NO SETOR DE ENVASE: ILUMINAÇÃO DA ÁREA DE ENVASE OSCILANDO A CORRENTE,Elétrica,Média
+Transmissor de pressão 4-20mA com falha no intertravamento de segurança no setor de envase,Automação,Alta
+Estiera parando sem aviso após a última manutenção,Mecânica,Média
+Válvula proporcional com letiura 4-20mA oscilando no turno da manhã,Automação,Média
+Sensor indutivo da esteira com leitura 4-20mA oscilando durante a partida,Automação,Média
+Agendar tomada industrial do setor de embalagem para identificação dos circuitos. na linha 3,Elétrica,Baixa
+Correia do ventilador para reaperto de parafusos na próxima parada na linha 3,Mecânica,Baixa
+Válvula pneumática para lubrificação programada no turno da noite,Mecânica,Baixa
+Preventiva: servo drive da embaladora para backup do programa agendado durante a partida,Automação,Baixa
+TRANSFORMADOR DA SUBESTAÇÃO COM RUÍDO DE ZUMBIDO,Elétrica,Média
+Na linha 3: VFD da bomba (parametrizacao) com leitura 4-20mA oscilando,Automação,Média
+Eixo do misturador com vazamento de gás refrigerante no setor de envase,Mecânica,Alta
+VFD da esteira oscilando a corrente no setor de envase,Elétrica,Média
+Operador informa que sistema SCADA da planta com falha critica e risco de acidente apos a ultima manutencao,Automação,Alta
+FAVOR VERIFICAR: SENSOR INDUTIVO DA ESTEIRA COM COMANDO TRAVADO E MAQUINA OPERANDO SEM CONTROLE. DURNTE A PARTIDA,Automação,Alta
+Favor verificar: IHM da prensa com falha no intertravamento de segurança. após a troca de turno,Automação,Alta
+Favor verificar: compressor de ar com peça solta e risco para o operador. após a troca de turno,Mecânica,Alta
+Bomba não parte de manhã após a troca de turno,Elétrica,Média
+Na área de expedição: sensor indutivo da esteira travando e reiniciando sozinho,Automação,Média
+Painel esquentando e motor travando desde ontem,Mecânica,Média
+Operador informa que VFD da bomba (parametrização) com erro E04 intermitente no setor de envase,Automação,Média
+Esteira parando sem aviso desde ontem,Automação,Média
+Operador informa que rede Profibus do painel acionou parada de emergência sem causa aparente desde ontem,Automação,Alta
+Operador informa que motor trifásico da bomba com ruído de zumbido,Elétrica,Média
+Motor desarmando com cheiro de queiamdo desde ontem,Elétrica,Alta
+Preventiva: painel elétrico da linha 2 para inspeção elétrica de rotina durante a partida,Elétrica,Baixa
+Preventiva: VFD da esteira com troca preventiva de lapmadas no setor de utilidades,Elétrica,Baixa
+No turno da manhã: relé térmico do exaustor oscilando a corrente,Elétrica,Média
+Operador informa que iluminação da área de envase com ruído de zumbido no setor de utilidades,Elétrica,Média
+Vibracao e queda de rotacao no motor na area de expedicao,Elétrica,Média
+Corrente do elevador de canecas para inspeção preventiva mensal após a troca de turno,Mecânica,Baixa
+Favor verificar: painel elétrico da linha 2 com cabo exposto e risco de choque. no turno da noite,Elétrica,Alta
+Favor verificar: VFD da esteira apresentando risco de choque elétrico.,Elétrica,Alta
+Favor verificar: bomba de óleo quebrou e há risco de acidente. no turno da manhã,Mecânica,Alta
+VFD da esteira apresentando risco de choque elétrico no setor de envase,Elétrica,Alta
+Preventiva: transmissor de pressao 4-20mA para inclusao de novo alarme na IHM na linha 3,Automação,Baixa
+Acoplamento da bomba hidraulica para limpeza e inspecao de rotina no setor de envase,Mecânica,Baixa
+Agendar painel elétrico da linha 2 com troca prventiva de lâmpadas. no turno da manhã,Elétrica,Baixa
+No setor de utilidades: transmissor de pressao 4-20mA perdendo comunicacao de forma intermitente,Automação,Média
+No setor de envase: quadro de distribuicao com cheiro de queimado e faiscas,Elétrica,Alta
+VFD da bomba (parametrizacao) para backup do programa agendado,Automação,Baixa
+Agendar sensor fotoelétrico da seladora para revisão da lógica de baixa criticidade. após a troca de turno,Automação,Baixa
+Operador informa que sistema SCADA da planta acionou parada de emergência sem causa aparente na linha 3,Automação,Alta
+Módulo de I/O remoto com falha crítica e risco de acidente durante a partida,Automação,Alta
+Preventiva: encoder do eixo principal para ajuste de parâmetros de rotina no setor de utilidades,Automação,Baixa
+Agendar transformador da suebstação para inspeção elétrica de rotina. no turno da noite,Elétrica,Baixa
+Operador informa que redutor da esteira transportadora perdendo pressão aos poucos no setor de utilidades,Mecânica,Média
+Motor deasrmando no setor de envase,Mecânica,Média
+Corrente do elevador de canecas para lubrificação programada,Mecânica,Baixa
+Bomba de óleo com vazamento de gás refrigerante durante a partida,Mecânica,Alta
+DESDE ONTEM: IHM DA PRENSA ACIONOU PARADA DE EMERGENCIA SEM CAUSA APARENTE,Automação,Alta
+Favor verificar: bomba de oleo travou e parou a linha inteira. na linha 3,Mecânica,Alta
+Preventiva: servo drive da embaladora para inclusao de novo alarme na IHM no setor de envase,Automação,Baixa
+Operador informa que VFD da bomba (parametrizacao) com leitura 4-20mA oscilando desde ontem,Automação,Média
+Preventiva: motor trifásico da bomba para reaperto de bornes programado após a última manutenção,Elétrica,Baixa
+Módulo de I/O remoto com leitura 4-20mA oscilando desde ontem,Automação,Média
+Favor verificar: rolamento do motor da esteira trabalhando com vazamento leve de oleo. no setor de envase,Mecânica,Média
+Bomba não parte de manhã desde ontem,Automação,Média
+Favor verificar: corrente do elevador de canecas trabalhando com vazamento leve de óleo. na área de expedição,Mecânica,Média
+Rolamento do motor da esteira qubrou e há risco de acidente na linha 3,Mecânica,Alta
+Preventiva: sensor fotoelétrico da seladora para backup do programa agendado no turno da noite,Automação,Baixa
+FAVOR VERIFICAR: VFD DA ESTEIRA COM AQUECIMENTO ACIMA DO NORMAL NOS TERMINAIS. NO SETOR DE ENVASE,Elétrica,Média
+Preventiva: VFD da esteira para termografia preventiva durante a partida,Elétrica,Baixa
+Preventiva: compressor de ar para inspeção preventiva mensal no setor de envase,Mecânica,Baixa
+Agendar esteira da linha 1 com troca preventiva agendada. no turno da noite,Mecânica,Baixa
+Agendar esteira da linha 1 para ajuste de alinhamento preventivo. no turno da noite,Mecânica,Baixa
+Cabo de alimentação do motor com aquecimento acima do normal nos terminais no turno da manhã,Elétrica,Média
+VFD da esteira para reaperto de bornes programado durante a partida,Elétrica,Baixa
+Favor verificar: sensor indutivo da esteira perdeu comuicacao e parou a linha inteira. no turno da noite,Automação,Alta
+Equipamento desligando sozinho apos a ultima manutencao,Automação,Média
+Tomada industrial do setor de embalagem com cheiro de queimado e faiscas apos a troca de turno,Elétrica,Alta
+No setor de envase: esteira da linha 1 quebrou e há risco de acidnete,Mecânica,Alta
+Operador informa que esteira da linha 1 com folga excessiva no eixo na linha 3,Mecânica,Média
+IHM da prensa para backup do programa agendado,Automação,Baixa
+Na área de expedição: válvula proporcional travando e reiniciando sozihno,Automação,Média
+No setor de envase: transmissor de pressao 4-20mA com leitura 4-20mA oscilando,Automação,Média
+VFD da esteira com ruído de zumbido na área de expedição,Elétrica,Média
+Cilindro hidráulico trabalhando com vazamento leve de óleo no turno da manhã,Mecânica,Média
+Válvula proporcional com alarme de falha de encoder na linha 3,Automação,Média
+OPERADOR INFORMA QUE PAINEL ELETRICO DA LINHA 2 APRESENTANDO RISCO DE CHOQUE ELETRICO NO TURNO DA NOITE,Elétrica,Alta
+Rede Profibus do painel com erro E04 intermitente,Automação,Média
+Servo drive da embaladora para inclusão de novo alarme na IHM após a última manutenção,Automação,Baixa
+Desde ontem: IHM da prensa com falha no intertravamento de seguranca,Automação,Alta
+Agendar correia do ventilador para reaperto de parafusos na proxima parada. apos a troca de turno,Mecânica,Baixa
+Agendar encoder do eixo principal para revisao da logica de baixa criticidade. desde ontem,Automação,Baixa
+Motor esquentando e desarmando o termico na linha 3,Elétrica,Média
+Válvula pnuemática com peça solta e risco para o operador no setor de envase,Mecânica,Alta
+Iluminação da área de envase com cheiro de queimado e faíscas na área de expedição,Elétrica,Alta
+Operador informa que rede Profibus do painel acionou parada de emergência sem causa aparente no setor de utilidades,Automação,Alta
+Favor verificar: tomada industrial do setor de embalagem com cabo exposto e risco de choque. após a troca de turno,Elétrica,Alta
+Operador informa que disjuntor do motor principal com fusível queimando repetidamente,Elétrica,Média
+Cilindro hidráulico com peça solta e risco para o operador no setor de utilidades,Mecânica,Alta
+FAVOR VERIFICAR: IHM DA PRENSA PERDENDO COMUNICAÇÃO DE FORMA INTERMITENTE. APÓS A TROCA DE TURNO,Automação,Média
+NA LINHA 3: DISJUNTOR DO MOTOR PRINCIPAL COM CABO EXPOSTO E RISCO DE CHOQUE,Elétrica,Alta
+Esteira da linha 1 perdendo pressao aos poucos apos a ultima manutencao,Mecânica,Média
+ESTEIRA DA LINHA 1 AQUECENDO ACIMA DO NORMAL NO TURNO DA NOITE,Mecânica,Média
+Rolamento do motor da esteira para inspeção preventiva mensal no turno da manhã,Mecânica,Baixa
+CLP da linha de evase para inclusao de novo alarme na IHM no turno da manha,Automação,Baixa
+Operador informa que motor trifásico da bomba apresentando risco de choque elétrico no turno da manhã,Elétrica,Alta
+Motor desarmando após a última manutenção,Mecânica,Média
+Agendar rolamento do motor da esteira para limpeza e inspecao de rotina. desde ontem,Mecânica,Baixa
+Operador informa que sensor fotoelétrico da seladora perdendo comunicação de forma intermitente durante a partida,Automação,Média
+Contator da bomba com cheiro de qeimado e faíscas desde ontem,Elétrica,Alta
+Preventiva: rede Profibus do painel para inclusão de novo alarme na IHM no setor de utilidades,Automação,Baixa
+Durnate a partida: transmissor de pressão 4-20mA travando e reiniciando sozinho,Automação,Média
+Favor verificar: motor trifásico da bomba com fusível queimando repetidamente. na linha 3,Elétrica,Média
+No setor de utilidades: IHM da prensa perdeu comunicação e parou a linha inteira,Automação,Alta
+AEGNDAR VFD DA ESTEIRA PARA MEDIÇÃO DE ISOLAMENTO PERIÓDICA. NO TURNO DA NOITE,Elétrica,Baixa
+Válvula pneumática aquecendo acima do normal no turno da noite,Mecânica,Média
+VFD da esteira com troca preventiva de lâmpadas após a troca de turno,Elétrica,Baixa
+Transformador da subestação para identificação dos circuitos durante a partida,Elétrica,Baixa
+Agendar válvula pneumática para inspeção preventiva mensal. no setor de utilidades,Mecânica,Baixa
+Operador informa que eixo do misturador perdendo pressão aos poucos após a troca de turno,Mecânica,Média
+Desde ontem: encoder do eixo principal perdendo comunicacao de forma intermitente,Automação,Média
+Preventiva: correia do ventilador com troca preventiva agendada no setor de utilidades,Mecânica,Baixa
+Agendar cabo de alimentacao do motor para termografia preventiva. na area de expedicao,Elétrica,Baixa
+Favor verificar: esteira da linha 1 trabalhando com vazamento leve de óleo. após a troca de turno,Mecânica,Média
+Bomba não parte de manhã após a última manuteçnão,Elétrica,Média
+Operador informa que servo drive da embaladora peredu comunicação e parou a linha inteira na linha 3,Automação,Alta
+Operador informa que cabo de alimentação do motor com cabo exposto e risco de choque na linha 3,Elétrica,Alta
+Servo drive da embaladora para backup do programa agendado após a última manuteção,Automação,Baixa
+FAVOR VERIFICAR: SENSOR FOTOELÉTRICO DA SELADORA PERDEU COMUNICAÇÃO E PAROU A LINHA INTEIRA.,Automação,Alta
+Após a última manutenção: tomada industrial do setor de embalagem com cabo exposto e risco de choque,Elétrica,Alta
+Motor trifasico da bomba pegou fogo apos a ultima manutencao,Elétrica,Alta
+Operador inorma que VFD da esteira com cabo exposto e risco de choque desde ontem,Elétrica,Alta
+Favor verificar: encoder do eixo principal com leitrua 4-20mA oscilando. no setor de envase,Automação,Média
+Esteira parando sem aviso no setor de utilidades,Mecânica,Média
+REDE PROFIBUS DO PAINEL PARA AJUSTE DE PARÂMETROS DE ROTINA DURANTE A PARTIDA,Automação,Baixa
+Máquina parando e reiniciando no turno da manhã,Automação,Média
+Painel esquentando e motor travando na linha 3,Elétrica,Média
+Favor verificar: IHM da prensa com sensor falhando de vez em quando. durante a partida,Automação,Média
+Sensor indutivo da esteira para calibracao periodica na linha 3,Automação,Baixa
+Operador informa que cabo de alimentação do motor apresentando risco de choque elétrico no turno da noite,Elétrica,Alta
+Operador informa que motor trifásico da bomba com aquecimento acima do normal nos terminais no turno da noite,Elétrica,Média
+Corrente do elevador de canecas com folga excessiva no eixo no setor de utilidades,Mecânica,Média
+Favor verificar: transformador da subestação apresenatndo risco de choque elétrico. após a troca de turno,Elétrica,Alta
+Após a troca de turno: disjuntor do motor principal com aquecimento acima do normal nos terminais,Elétrica,Média
+Encoder do eixo principal perdendo comunicacao de forma intermitente apos a troca de turno,Automação,Média
+Preventiva: sensor indutivo da esteira para revsião da lógica de baixa criticidade no turno da noite,Automação,Baixa
+Desde ontem: redutor da esteira transportadora com vazamento de gás refrigerante,Mecânica,Alta
+Cilindro hidráulico com desgaste visível no setor de utilidades,Mecânica,Média
+Mancal do exaustor para inspeção preventiva mensal durante a partida,Mecânica,Baixa
+Favor verificar: bomba de óleo com ruído anormal e vibração. após a troca de turno,Mecânica,Média
+Bomba de oleo com vzaamento de gas refrigerante,Mecânica,Alta
+Apos a troca de turno: iluminacao da area de envase apresentando risco de choque eletrico,Elétrica,Alta
+Redutor da esteira transportadora com troca preventiva agendada no turno da noite,Mecânica,Baixa
+Agendar VFD da bomba (parametrização) para inclusão de novo alarme na IHM. após a troca de turno,Automação,Baixa
+Após a última manutenção: rolamento do motor da esteira quebrou e há risco de acidente,Mecânica,Alta
+Favor verificar: VFD da bomba (parametrizacao) perdeu comunicacao e parou a linha inteira. no turno da noite,Automação,Alta
+No turno da noite: correia do ventlador com folga excessiva no eixo,Mecânica,Média
+Favor verificar: VFD da bomba (parametrização) perdeu comunicação e parou a linha inteira. no setor de utilidades,Automação,Alta
+Agendar rede Profibus do painel para ajuste de parametros de rotina. na linha 3,Automação,Baixa
+Sensor indutivo da esteira para inclusao de novo alarme na IHM no turno da noite,Automação,Baixa
+Preventiva: acoplamento da bomba hidráulica para inspeção preventiva mensal após a última manutenção,Mecânica,Baixa
+Favor verificar: encoder do eixo principal com erro E04 intermitente. no setor de utilidades,Automação,Média
+Operador informa que cilindro hidráulico com vazamento de gás refrigerante no turno da manhã,Mecânica,Alta
+Transmissor de pressão 4-20mA para revisão da lógica de baixa criticidade na linha 3,Automação,Baixa
+NO TURNO DA MANHÃ: ILUMINAÇÃO DA ÁREA DE ENVASE COM QUEDA DE TENSÃO,Elétrica,Média
+Sensor fotoelétrico da seladora acionou parada de emergência sem causa aparente desde ontem,Automação,Alta
+Vbiracao e queda de rotacao no motor desde ontem,Mecânica,Média
+Preventiva: relé térmico do exaustor para identificação dos circuitos após a troca de turno,Elétrica,Baixa
+VFD da bomba (parametrização) com alarme de falha de encoder na área de expedição,Automação,Média
+MOTOR DESARMANDO COM CHEIRO DE QEUIMADO NO SETOR DE UTILIDADES,Elétrica,Alta
+Encoder do eixo principal com sensor falhando de vez em quando no turno da manhã,Automação,Média
+Agendar sistema SCADA da planta para inclusão de novo alarme na IHM. no setor de envase,Automação,Baixa
+Na linha 3: valvula pneumatica com desgaste visvel,Mecânica,Média
+Motor desarmando durante a partida,Elétrica,Média
+Na área de expedição: bomba de óleo aquecendo acima do normal,Mecânica,Média
+Operador informa que fonte 24V do painel oscilando a corrente após a troca de turno,Elétrica,Média
+Favor verificar: disjuntor do motor principal com ruido de zumbido. apos a troca de turno,Elétrica,Média
+Sensor e motor sem resposta na area de expedicao,Automação,Média
+OPERADOR INFORMA QUE ILUMINAÇÃO DA ÁREA DE ENVASE COM FUSÍVEL QUEIMANDO REPETIDAMENTE,Elétrica,Média
+Operador informa que fonte 24V do painel desarmando com frequência na linha 3,Elétrica,Média
+Compressor de ar trabalhando com vazamento leve de oleo no turno da noite,Mecânica,Média
+Operador informa que esteira da linha 1 trabalhando com vazamento leve de óleo no setor de envase,Mecânica,Média
+No turno da manha: CLP da linha de envase acionou parada de emergencia sem causa aparente,Automação,Alta
+Cabo de alimentação do motor com cabo exposto e risco de choque durante a partida,Elétrica,Alta
+Agendar válvula proporcional para calibração periódica. durante a partida,Automação,Baixa
+Agendar cilindro hidráulico para limpeza e inspeção de rotina. no turno da manhã,Mecânica,Baixa
+No setor de envase: VFD da bomba (parametrização) perdendo comunicação de forma intermitente,Automação,Média
+No setor de utilidades: VFD da esteira com queda de tensão,Elétrica,Média
+IHM da prensa para inclusao de novo alarme na IHM no setor de envase,Automação,Baixa
+Operador informa que rele termico do exaustor com fusivel queimando repetidamente no setor de envase,Elétrica,Média
+Ventilador parando de vez em quando no setor de utilidades,Elétrica,Média
+Operador informa que sistema SCADA da planta travando e reiniciando sozinho no turno da manhã,Automação,Média
+Operador infrma que servo drive da embaladora perdeu comunicação e parou a linha inteira desde ontem,Automação,Alta
+Agendar modulo de I/O remoto para calibracao periodica. no turno da noite,Automação,Baixa
+CLP da linha de envase com leitura 4-20mA oscilando na linha 3,Automação,Média
+Preventiva: disjuntor do motor principal para reaperto de bornes programado após a troca de turno,Elétrica,Baixa
+Preventiva: disjuntor do motor principal para termografia perventiva,Elétrica,Baixa
+Preventiva: disjuntor do motor principal para identificação dos circuitos no setor de envase,Elétrica,Baixa
+Operador informa que senor fotoeletrico da seladora perdeu comunicacao e parou a linha inteira na area de expedicao,Automação,Alta
+No setor de utilidades: válvula pneumática travou e parou a linha inteira,Mecânica,Alta
+Bomba nao parte de manha durante a partida,Elétrica,Média
+No turno da manha: correia do ventilador travou e parou a linha inteira,Mecânica,Alta
+Favor verificar: sensor indutivo da esteira com falha crítica e risco de acidente. no setor de envase,Automação,Alta
+Operador informa que iluminação da área de envase pegou fogo durante a partida,Elétrica,Alta
+Relé térmico do exaustor com troca preventiva de lâmpadas após a troca de turno,Elétrica,Baixa
+Sensor e motor sem resposta no setor de utilidades,Elétrica,Média
+Preventiva: eixo do misturador para inspeção preventiva mensal desde ontem,Mecânica,Baixa
+Desde ontem: cabo de alimentacao do motor desarmando com frequencia,Elétrica,Média
+Favor verificar: compressor de ar trabalhando com vazamneto leve de óleo.,Mecânica,Média
+Operador informa que redutor da esteira transportadora com peça solta e risco para o operador na linha 3,Mecânica,Alta
+Rede Profibus do painel para calibração periódica durante a partida,Automação,Baixa
+Favor verificar: sistema SCADA da planta com falso sinal de emergência. após a última manutenção,Automação,Alta
+Bomba de óleo com vazamento de gás refrigerante,Mecânica,Alta
