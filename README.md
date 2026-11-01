@@ -68,6 +68,10 @@ Fluxo do modo `hybrid`:
 
 
 
+O plano gratuito é suficiente para este projeto, mas os limites variam por modelo (ver "Cotas e escolha do modelo").
+
+
+
 \## Configuração (`.env`)
 
 
@@ -82,11 +86,13 @@ Os valores do `.env` têm prioridade sobre os padrões definidos em `app/config.
 
 | `GEMINI\_API\_KEY` | vazio | Chave da API. Sem ela, só o ML funciona. |
 
-| `GEMINI\_MODEL` | vazio | Nome do modelo (ex.: `gemini-3.8-flash`). Modelos antigos podem ser aposentados para contas novas. |
+| `GEMINI\_MODEL` | vazio | Nome do modelo. O usado nos resultados é `gemini-3.5-flash-lite`. |
 
-| `GEMINI\_TIMEOUT\_SECONDS` | 45 | Tempo máximo de cada tentativa. Em testes, 20 s foi insuficiente. |
+| `GEMINI\_TIMEOUT\_SECONDS` | 45 | Tempo máximo de cada tentativa. |
 
-| `GEMINI\_MAX\_ATTEMPTS` | 3 | Tentativas por chamado. Cada tentativa conta na cota da API. |
+| `GEMINI\_MAX\_ATTEMPTS` | 3 | Tentativas por chamado. Cada tentativa conta na cota. |
+
+| `GEMINI\_BACKOFF\_BASE\_SECONDS` | 1 | Espera base entre tentativas (dobra a cada tentativa). Em lotes no plano gratuito, 5 ajuda a respeitar o limite por minuto. |
 
 | `ML\_CONFIDENCE\_THRESHOLD` | 0,65 | Abaixo disso, o modo híbrido escala ao Gemini. |
 
@@ -156,7 +162,7 @@ Em um segundo cmd (também com o venv ativado), na mesma pasta:
 
 ```bat
 
-streamlit run ui/app.py
+python -m streamlit run ui/app.py
 
 ```
 
@@ -244,71 +250,77 @@ curl localhost:8000/benchmark
 
 
 
-\### Benchmark medido (conjunto de teste congelado: 82 chamados sintéticos)
+\### Benchmark: 30 chamados do teste congelado
 
 
 
-| Motor | Acc. categoria | F1-macro categoria | Acc. prioridade | F1-macro prioridade | Latência média | p95 | Custo/1000 |
+Amostra de 30 dos 82 chamados sintéticos do conjunto de teste congelado, modelo `gemini-3.5-flash-lite`, 0 chamadas do Gemini substituídas pelo ML (relatório completo em `reports/benchmark.md`).
+
+
+
+| Motor | Acc. categoria | F1 categoria | Acc. prioridade | F1 prioridade | Latência média | p95 | Custo/1000 (estimado) |
 
 |---|---|---|---|---|---|---|---|
 
-| ML (regressão logística) | 0,939 | 0,940 | 1,000 | 1,000 | 7,0 ms | 7,2 ms | US$ 0 |
+| ML (regressão logística) | 0,900 | 0,895 | 1,000 | 1,000 | 7,7 ms | 7,7 ms | US$ 0 |
 
-| Gemini | não medido | | | | | | |
+| Gemini | 0,967 | 0,965 | 0,933 | 0,939 | 4,5 s | 13,1 s | ver nota |
 
-| Híbrido | não medido | | | | | | |
-
-
-
-A prioridade chega a 100% porque, no dataset sintético, ela é determinada por palavras-chave dos templates. Esse número não deve ser lido como desempenho esperado em chamados reais.
+| Híbrido | 0,900 | 0,895 | 1,000 | 1,000 | 7,7 ms | 7,7 ms | US$ 0 |
 
 
 
-\*\*Por que o Gemini não foi medido:\*\* o plano gratuito da API permite 20 requisições por dia por modelo (`gemini-3.8-flash`), e a cota se esgotou durante os testes manuais. O benchmark completo exige conta com cobrança ativa ou amostra reduzida (ver "Rodando o benchmark do Gemini").
+Com o conjunto completo (82 chamados), o ML obteve acurácia de categoria 0,939, F1-macro 0,940 e prioridade 1,000.
 
 
 
-\### Observações manuais do Gemini (não são benchmark)
+\*\*Como ler esses números:\*\*
 
 
 
-Testes isolados com `gemini-3.8-flash`, sem rigor estatístico:
+\- \*\*A amostra é pequena.\*\* A diferença de categoria entre Gemini (29/30) e ML (27/30) é de 2 chamados e não permite concluir que um motor é melhor que o outro.
+
+\- \*\*O híbrido foi idêntico ao ML porque nenhum chamado foi escalado:\*\* o ML teve confiança igual ou acima de 0,65 em todos os 30. O benchmark, portanto, \*\*não exercita\*\* o roteador do modo híbrido. Em testes manuais com chamados ambíguos, o escalonamento ocorreu (ver abaixo).
+
+\- \*\*A prioridade do ML chega a 100%\*\* porque, no dataset sintético, ela é determinada por palavras-chave dos templates. Esse número não deve ser lido como desempenho esperado em chamados reais.
+
+\- \*\*Latência do Gemini:\*\* média de 4,5 s e p95 de 13,1 s no benchmark; em testes manuais isolados, cerca de 1,3 a 1,5 s. A variação não foi investigada.
+
+\- \*\*Custo:\*\* o valor é estimado pelo app a partir dos tokens e dos preços configurados (US$ 0,30 por milhão de tokens de entrada e US$ 2,50 de saída, valores de referência de outro modelo, não os do `gemini-3.5-flash-lite`). No plano gratuito não há cobrança.
+
+\- O relatório também lista as discordâncias entre ML e Gemini (3 em 30). O critério de contagem do campo "quem acertou" ainda não foi verificado e não é usado aqui como resultado.
 
 
 
-\- Classificação com sucesso em 10 a 49 s por chamado. Em algumas chamadas houve timeout (20 s e 60 s) ou erro 503 de alta demanda do provedor.
-
-\- Custo estimado pelo próprio app: cerca de US$ 0,0005 a 0,0007 por chamada (aprox. 745 tokens de entrada e 130 a 175 de saída).
-
-\- Exemplo de roteamento híbrido: o chamado "esteira parando sozinha no turno da noite" teve confiança de 57% no ML (Mecânica), foi escalado ao Gemini, que classificou como Automação (CLP/sensores) com confiança de 80%, e a resposta marcou revisão humana por divergência. Um único exemplo não prova que o Gemini acerta mais.
-
-\- O cache em memória funcionou: repetir o mesmo texto retornou em menos de 1 ms, com custo zero.
-
-\- O fallback para o ML funcionou nos casos de timeout, 503 e modelo recusado.
-
-\- Foi configurado `thinking\_budget=0` na chamada ao Gemini para reduzir o tempo de raciocínio do modelo. Em um teste direto à API, 1 chamada sem o limite levou 74 s com 363 tokens de raciocínio, e outra com `thinking\_budget=0` levou 7 s. \*\*O efeito dentro do app não foi confirmado\*\*: as chamadas pelo app continuaram em 46 a 49 s. A cota esgotou antes de medir o campo `thoughts\_token\_count`.
+\### Exemplo manual de roteamento híbrido
 
 
 
-\### Rodando o benchmark do Gemini
+Com o modelo `gemini-3.8-flash`, o chamado "esteira parando sozinha no turno da noite" teve confiança de 57% no ML (Mecânica), foi escalado ao Gemini, que classificou como Automação (CLP/sensores) com confiança de 80%, e a resposta marcou revisão humana por divergência. Um único exemplo não prova que o Gemini acerta mais.
 
 
 
-No plano gratuito, use amostra pequena e uma tentativa por chamado, para os retries não consumirem a cota:
+\### Cotas e escolha do modelo
 
 
 
-```
-
-GEMINI\_MAX\_ATTEMPTS=1      # no .env, e reinicie a API
-
-python -m ml.benchmark --amostra 8
-
-```
+O modelo inicial, `gemini-3.8-flash`, mostrou-se inadequado no plano gratuito:
 
 
 
-O benchmark pode chamar o Gemini mais de uma vez por amostra (modos `llm` e `hybrid`). Com cobrança ativa, use `--amostra 30` e substitua a tabela acima por `reports/benchmark.md`.
+\- Latência de 10 a 58 s por chamado, com tokens de raciocínio ativos (205 a cerca de 400 por chamada) e vários erros 503 e 504 do provedor.
+
+\- `thinking\_budget=0` não desligou o raciocínio nesse modelo, o nível `MINIMAL` não é suportado, e o teste com `LOW` terminou em 504 sem resposta.
+
+\- Cota diária de 20 requisições, esgotada durante os testes (erro 429).
+
+
+
+Os modelos `gemini-3.5-flash-lite` e `gemini-3.1-flash-lite` responderam em cerca de 1,3 a 1,5 s sem tokens de raciocínio. Foi adotado o `gemini-3.5-flash-lite`, cujo limite gratuito, conforme o painel do AI Studio, é de 500 requisições por dia e 15 por minuto. O `gemini-2.5-flash` e o `gemini-2.5-flash-lite` retornam 404 para contas novas.
+
+
+
+Para lotes no plano gratuito, use `GEMINI\_MAX\_ATTEMPTS=4` e `GEMINI\_BACKOFF\_BASE\_SECONDS=5`, para que recusas por limite por minuto sejam repetidas em vez de cair no ML. Os limites mudam com o tempo: confira em https://ai.dev/rate-limit.
 
 
 
@@ -320,19 +332,25 @@ O benchmark pode chamar o Gemini mais de uma vez por amostra (modos `llm` e `hyb
 
 |---|---|---|
 
-| `fallback` com `requisicao\_recusada` | Modelo inexistente ou aposentado, ou chave inválida | Confira `GEMINI\_MODEL` e a chave. O erro 404 do Google indica o modelo sugerido. |
+| `fallback` com `requisicao\_recusada` | Modelo inexistente ou aposentado, ou chave inválida | Confira `GEMINI\_MODEL` (o nome completo, por exemplo `gemini-3.5-flash-lite`) e a chave. O erro 404 do Google indica o modelo sugerido. |
 
-| `fallback` com `timeout` | Chamada passou do limite de tempo | Aumente `GEMINI\_TIMEOUT\_SECONDS` no `.env` e reinicie a API. |
+| `fallback` com `timeout` | Chamada passou do limite de tempo | Aumente `GEMINI\_TIMEOUT\_SECONDS` no `.env`, reinicie a API ou troque para um modelo mais rápido. |
 
-| `fallback` com `erro\_servidor` (503) | Alta demanda no Google | Tente de novo mais tarde. |
+| `fallback` com `erro\_servidor` (5xx) | Alta demanda ou erro no Google | Tente de novo mais tarde. |
 
-| `fallback` com `rate\_limit` (429) | Cota esgotada (plano gratuito: 20 req/dia/modelo) | Espere a renovação, reduza `GEMINI\_MAX\_ATTEMPTS` ou ative cobrança. |
+| `fallback` com `rate\_limit` (429) | Cota esgotada, por minuto ou por dia, conforme o modelo | Espere a renovação, aumente o backoff ou use outro modelo. |
 
 | Mudei o `.env` e nada mudou | A API lê o `.env` só ao iniciar | Pare o uvicorn (Ctrl+C) e suba de novo. |
 
-| `'pytest' não é reconhecido` ou `No module named ...` | Venv não ativado no terminal | Rode `.venv\\Scripts\\activate` (Windows). O prompt deve mostrar `(.venv)`. |
+| `'pytest' não é reconhecido`, `No module named ...` | Venv não ativado no terminal | Rode `.venv\\Scripts\\activate` (Windows). O prompt deve mostrar `(.venv)`. |
+
+| `No module named 'plotly'` no Streamlit | Streamlit iniciado fora do venv | Ative o venv e use `python -m streamlit run ui/app.py`. |
 
 | `API offline` na interface | A API não está rodando | Suba o uvicorn em outro terminal. |
+
+
+
+Para descobrir quais modelos a sua chave enxerga, liste com o SDK (`client.models.list()`) e confira o campo `supported\_actions`.
 
 
 
@@ -364,11 +382,11 @@ O benchmark pode chamar o Gemini mais de uma vez por amostra (modos `llm` e `hyb
 
 \- O dataset é sintético e templatizado: variações do mesmo template caem em treino e teste, o que infla as métricas. Desempenho em chamados reais não está garantido.
 
-\- O desempenho do Gemini não foi medido em benchmark (ver "Resultados"). A latência observada, de dezenas de segundos, é alta para uso interativo e depende da carga do provedor.
+\- O benchmark do Gemini usou 30 chamados, amostra pequena demais para comparar os motores com segurança, e não exercitou o roteador híbrido (0% escalado).
 
-\- Resultados do Gemini variam por modelo e versão. Reexecute o benchmark ao trocar `GEMINI\_MODEL`.
+\- Os preços usados na estimativa de custo não são os do modelo adotado.
 
-\- O plano gratuito da API Gemini limita a 20 requisições por dia por modelo, e cada retry conta.
+\- Resultados do Gemini variam por modelo e versão. Reexecute o benchmark ao trocar `GEMINI\_MODEL`. Modelos antigos são aposentados para contas novas, e os limites gratuitos mudam.
 
 \- Enviar descrições de manutenção a uma API externa tem implicações de custo, privacidade e confidencialidade. Remova nomes, tags de ativos e dados sensíveis antes, ou avalie uma opção com contrato de dados adequado.
 
@@ -384,13 +402,13 @@ O benchmark pode chamar o Gemini mais de uma vez por amostra (modos `llm` e `hyb
 
 
 
-\- Confirmar se `thinking\_budget=0` reduz a latência no app (medir `thoughts\_token\_count`) e, se necessário, atualizar o SDK `google-genai`.
+\- Exercitar o roteador híbrido: avaliar o limiar de confiança em chamados ambíguos ou reais, onde o ML escale ao Gemini, e medir custo × acurácia.
 
-\- Rodar o benchmark do Gemini e do híbrido com cota suficiente e preencher a tabela de resultados.
+\- Repetir o benchmark com o conjunto de teste completo (82 chamados) e, se possível, com mais de uma amostra.
+
+\- Corrigir os preços de referência para os do modelo adotado e verificar o critério do campo "quem acertou" no relatório.
 
 \- Validar com chamados reais anonimizados e um conjunto de teste rotulado por técnicos.
-
-\- Calibrar o limiar do híbrido pela curva custo × acurácia.
 
 \- Autenticação, rate limit e fila para lotes grandes.
 
