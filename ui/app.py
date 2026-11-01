@@ -14,6 +14,44 @@ HISTORY_PAGE_SIZE = 200
 
 st.set_page_config(page_title="Classificador de Chamados", page_icon="🛠️", layout="wide")
 
+TEMAS = {
+    "claro": {
+        "base": "light",
+        "primaryColor": "#1565C0",
+        "backgroundColor": "#FFFFFF",
+        "secondaryBackgroundColor": "#F0F4F8",
+        "textColor": "#000000",
+        "sidebar.backgroundColor": "#F5F7FA",
+        "sidebar.secondaryBackgroundColor": "#E6ECF2",
+    },
+    "escuro": {
+        "base": "dark",
+        "primaryColor": "#16A34A",
+        "backgroundColor": "#1F2023",
+        "secondaryBackgroundColor": "#2D2F34",
+        "textColor": "#FFFFFF",
+        "sidebar.backgroundColor": "#17181A",
+        "sidebar.secondaryBackgroundColor": "#26282C",
+    },
+}
+
+
+def apply_theme(name: str) -> None:
+    for key, value in TEMAS[name].items():
+        st._config.set_option(f"theme.{key}", value)
+
+
+def render_theme_toggle() -> None:
+    if "tema" not in st.session_state:
+        st.session_state["tema"] = "escuro" if st._config.get_option("theme.base") == "dark" else "claro"
+    current = st.session_state["tema"]
+    label = "🌙 Tema escuro" if current == "claro" else "☀️ Tema claro"
+    if st.sidebar.button(label, use_container_width=True):
+        new = "escuro" if current == "claro" else "claro"
+        st.session_state["tema"] = new
+        apply_theme(new)
+        st.rerun()
+
 
 def call_api(method: str, path: str, **kwargs: Any) -> Any | None:
     try:
@@ -283,6 +321,7 @@ def tab_retrain() -> None:
             st.write(f"Exemplos incorporados: {outcome['correcoes_incorporadas']}")
 
 
+render_theme_toggle()
 render_sidebar()
 st.title("Classificador Inteligente de Chamados de Manutenção")
 classify, history, benchmark, dashboard, retrain = st.tabs(["Classificar", "Histórico", "Benchmark", "Dashboard", "Retreinar"])

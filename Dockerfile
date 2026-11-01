@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app ./app
 COPY ml ./ml
 COPY ui ./ui
+COPY .streamlit ./.streamlit
 
 EXPOSE 8000 8501
 
