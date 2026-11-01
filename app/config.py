@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     gemini_api_key: str = ""
     gemini_model: str = ""
     gemini_timeout_seconds: float = 45.0
+    gemini_total_timeout_seconds: float = 30.0
     gemini_max_attempts: int = 3
     gemini_backoff_base_seconds: float = 1.0
     gemini_temperature: float = 0.1

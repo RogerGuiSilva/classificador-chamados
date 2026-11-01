@@ -168,9 +168,11 @@ class GeminiEngine(Engine):
 
     def _generate_verdict(self, text: str) -> tuple[GeminiVeredito, Any]:
         kind = "erro_desconhecido"
+        deadline = perf_counter() + self._settings.gemini_total_timeout_seconds
         for attempt in range(1, self._settings.gemini_max_attempts + 1):
+            attempt_timeout = min(self._settings.gemini_timeout_seconds, deadline - perf_counter())
             try:
-                response = self._send(text)
+                response = self._send(text, attempt_timeout)
                 return self._parse(response), response
             except Exception as error:
                 kind = failure_kind(error)
@@ -178,11 +180,14 @@ class GeminiEngine(Engine):
                 if kind not in RETRYABLE_KINDS:
                     break
                 if attempt < self._settings.gemini_max_attempts:
-                    self._sleep(self._backoff_delay(attempt, kind))
+                    delay = self._backoff_delay(attempt, kind)
+                    if deadline - perf_counter() <= delay:
+                        break
+                    self._sleep(delay)
         self.last_error = kind
         raise GeminiEngineError(kind)
 
-    def _send(self, text: str) -> Any:
+    def _send(self, text: str, timeout_seconds: float) -> Any:
         return self._client.models.generate_content(
             model=self._settings.gemini_model,
             contents=self._build_contents(text),
@@ -191,6 +196,7 @@ class GeminiEngine(Engine):
                 temperature=self._settings.gemini_temperature,
                 response_mime_type="application/json",
                 response_schema=GeminiVeredito,
+                http_options=types.HttpOptions(timeout=max(int(timeout_seconds * 1000), 1)),
             ),
         )
 

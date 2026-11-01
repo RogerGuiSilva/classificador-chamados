@@ -1,55 +1,55 @@
 {
-  "treinado_em": "2026-11-01T14:54:26+00:00",
+  "treinado_em": "2026-11-01T23:34:42+00:00",
   "n_teste": 82,
   "n_extras": {
-    "categoria": 6,
-    "prioridade": 6
+    "categoria": 48,
+    "prioridade": 48
   },
   "categoria": {
-    "melhor_modelo": "linear_svc_calibrado",
-    "n_treino": 332,
+    "melhor_modelo": "multinomial_nb",
+    "n_treino": 374,
     "validacao_cruzada": {
       "logistic_regression": {
-        "accuracy_media": 0.9276797829036635,
-        "f1_macro_media": 0.9278466399778045,
-        "f1_macro_desvio": 0.01779395745210144
+        "accuracy_media": 0.9198558558558558,
+        "f1_macro_media": 0.9202255689115105,
+        "f1_macro_desvio": 0.024856552544888527
       },
       "linear_svc_calibrado": {
-        "accuracy_media": 0.9276797829036635,
-        "f1_macro_media": 0.9279396145768798,
-        "f1_macro_desvio": 0.011253361890968358
+        "accuracy_media": 0.9278558558558558,
+        "f1_macro_media": 0.9278116234483604,
+        "f1_macro_desvio": 0.030517330263297685
       },
       "multinomial_nb": {
-        "accuracy_media": 0.9275440976933513,
-        "f1_macro_media": 0.9278390985025643,
-        "f1_macro_desvio": 0.033765679162775085
+        "accuracy_media": 0.9305585585585586,
+        "f1_macro_media": 0.9307491540006693,
+        "f1_macro_desvio": 0.029141265542600648
       },
       "random_forest": {
-        "accuracy_media": 0.8944369063772049,
-        "f1_macro_media": 0.8953849905425895,
-        "f1_macro_desvio": 0.031212667619835488
+        "accuracy_media": 0.9011531531531531,
+        "f1_macro_media": 0.9016366114211578,
+        "f1_macro_desvio": 0.030014618999070274
       }
     },
     "holdout": {
-      "accuracy": 0.9390243902439024,
-      "f1_macro": 0.9395981377113453,
+      "accuracy": 0.9634146341463414,
+      "f1_macro": 0.9641829229293254,
       "por_classe": {
         "Automação": {
-          "precision": 0.9629629629629629,
+          "precision": 1.0,
           "recall": 1.0,
-          "f1": 0.9811320754716981,
+          "f1": 1.0,
           "support": 26
         },
         "Elétrica": {
-          "precision": 0.9615384615384616,
-          "recall": 0.8620689655172413,
-          "f1": 0.9090909090909091,
+          "precision": 0.9333333333333333,
+          "recall": 0.9655172413793104,
+          "f1": 0.9491525423728814,
           "support": 29
         },
         "Mecânica": {
-          "precision": 0.896551724137931,
-          "recall": 0.9629629629629629,
-          "f1": 0.9285714285714286,
+          "precision": 0.9615384615384616,
+          "recall": 0.9259259259259259,
+          "f1": 0.9433962264150944,
           "support": 27
         }
       },
@@ -66,14 +66,14 @@
             0
           ],
           [
-            1,
-            25,
-            3
+            0,
+            28,
+            1
           ],
           [
             0,
-            1,
-            26
+            2,
+            25
           ]
         ]
       }
@@ -81,27 +81,27 @@
   },
   "prioridade": {
     "melhor_modelo": "logistic_regression",
-    "n_treino": 332,
+    "n_treino": 374,
     "validacao_cruzada": {
       "logistic_regression": {
-        "accuracy_media": 1.0,
-        "f1_macro_media": 1.0,
-        "f1_macro_desvio": 0.0
+        "accuracy_media": 0.9572612612612612,
+        "f1_macro_media": 0.957909225051264,
+        "f1_macro_desvio": 0.01933957952583234
       },
       "linear_svc_calibrado": {
-        "accuracy_media": 1.0,
-        "f1_macro_media": 1.0,
-        "f1_macro_desvio": 0.0
+        "accuracy_media": 0.9572612612612612,
+        "f1_macro_media": 0.957909225051264,
+        "f1_macro_desvio": 0.01933957952583234
       },
       "multinomial_nb": {
-        "accuracy_media": 0.9879240162822253,
-        "f1_macro_media": 0.9877292915915584,
-        "f1_macro_desvio": 0.01122694441827301
+        "accuracy_media": 0.9358558558558558,
+        "f1_macro_media": 0.9370942104086696,
+        "f1_macro_desvio": 0.027972402046152752
       },
       "random_forest": {
-        "accuracy_media": 0.966847580280416,
-        "f1_macro_media": 0.9675296485557988,
-        "f1_macro_desvio": 0.017237524210099713
+        "accuracy_media": 0.9251171171171171,
+        "f1_macro_media": 0.9255986916288244,
+        "f1_macro_desvio": 0.026137970769770626
       }
     },
     "holdout": {

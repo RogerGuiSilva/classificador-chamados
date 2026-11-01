@@ -79,6 +79,37 @@ def test_timeout_is_retried_with_exponential_backoff(settings):
     assert sleeps == [1.0, 2.0]
 
 
+def test_total_timeout_budget_limits_per_attempt_timeout_and_stops_retries(settings, monkeypatch):
+    now = [0.0]
+    monkeypatch.setattr("app.engines.gemini_engine.perf_counter", lambda: now[0])
+
+    class ClockedClient(ScriptedClient):
+        def generate_content(self, **kwargs):
+            now[0] += 4.0
+            return super().generate_content(**kwargs)
+
+    client = ClockedClient([httpx.ReadTimeout("lento")])
+    engine = GeminiEngine(
+        settings.model_copy(
+            update={
+                "gemini_api_key": "chave-de-teste",
+                "gemini_model": "modelo-teste",
+                "gemini_timeout_seconds": 20.0,
+                "gemini_total_timeout_seconds": 5.0,
+                "gemini_backoff_base_seconds": 1.0,
+            }
+        ),
+        client,
+        [],
+        sleep=lambda seconds: now.__setitem__(0, now[0] + seconds),
+    )
+    with pytest.raises(GeminiEngineError) as error:
+        engine.classify("texto")
+    assert error.value.kind == "timeout"
+    assert len(client.calls) == 1
+    assert client.calls[0]["config"].http_options.timeout == 5000
+
+
 def test_builtin_timeout_error_is_classified_as_timeout(settings):
     engine, _ = make_engine(settings, [TimeoutError()])
     with pytest.raises(GeminiEngineError) as error:

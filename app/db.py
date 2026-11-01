@@ -6,6 +6,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+import numpy as np
+
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS chamados (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -206,6 +208,13 @@ def usage_stats(path: Path) -> dict[str, Any]:
             "COALESCE(SUM(tokens_saida), 0) AS tokens_saida, COALESCE(SUM(custo_estimado), 0) AS custo_total, "
             "AVG(llm_latencia_ms) AS latencia_media_ms FROM chamados WHERE llm_categoria IS NOT NULL AND em_cache = 0"
         ).fetchone()
+        llm_latencies = [
+            row[0]
+            for row in connection.execute(
+                "SELECT llm_latencia_ms FROM chamados "
+                "WHERE llm_categoria IS NOT NULL AND em_cache = 0 AND llm_latencia_ms IS NOT NULL"
+            ).fetchall()
+        ]
         flags = connection.execute(
             "SELECT COALESCE(SUM(escalado_llm), 0) AS escalados, COALESCE(SUM(revisao_humana), 0) AS revisoes, "
             "COALESCE(SUM(fallback), 0) AS fallbacks, COALESCE(SUM(regra_aplicada), 0) AS regras, "
@@ -238,6 +247,8 @@ def usage_stats(path: Path) -> dict[str, Any]:
             "tokens_saida": llm["tokens_saida"],
             "custo_total_estimado": llm["custo_total"],
             "latencia_media_ms": llm["latencia_media_ms"],
+            "latencia_mediana_ms": float(np.median(llm_latencies)) if llm_latencies else None,
+            "latencia_p95_ms": float(np.percentile(llm_latencies, 95)) if llm_latencies else None,
         },
         "serie_diaria": [{"dia": row["dia"], "total": row["total"]} for row in daily],
     }

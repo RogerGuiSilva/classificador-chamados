@@ -103,6 +103,24 @@ def test_usage_stats_aggregates_llm_cost_and_correction_rate(database):
     assert stats["escalados_para_llm"] == 1
 
 
+def test_usage_stats_reports_median_and_p95_llm_latency_ignoring_cache_hits(database):
+    for latency in (1000.0, 2000.0, 50000.0):
+        db.insert_chamado(database, make_record(llm_categoria="Mecânica", llm_prioridade="Média", llm_latencia_ms=latency))
+    db.insert_chamado(
+        database, make_record(llm_categoria="Mecânica", llm_prioridade="Média", llm_latencia_ms=0.0, em_cache=1)
+    )
+    gemini = db.usage_stats(database)["gemini"]
+    assert gemini["latencia_mediana_ms"] == pytest.approx(2000.0)
+    assert gemini["latencia_p95_ms"] == pytest.approx(45200.0)
+    assert gemini["latencia_media_ms"] == pytest.approx(53000.0 / 3)
+
+
+def test_usage_stats_latency_percentiles_are_none_without_llm_calls(database):
+    db.insert_chamado(database, make_record())
+    gemini = db.usage_stats(database)["gemini"]
+    assert gemini["latencia_mediana_ms"] is None and gemini["latencia_p95_ms"] is None
+
+
 def test_connections_are_closed_after_use(database):
     import sqlite3
 

@@ -36,6 +36,25 @@ TEMAS = {
 }
 
 
+CHART_COLORS = {
+    "claro": ["#1565C0", "#90A4AE"],
+    "escuro": ["#16A34A", "#9CA3AF"],
+}
+
+HEATMAP_SCALES = {
+    "claro": ["#F0F4F8", "#1565C0"],
+    "escuro": ["#2D2F34", "#16A34A"],
+}
+
+
+def chart_colors() -> list[str]:
+    return CHART_COLORS[st.session_state.get("tema", "claro")]
+
+
+def heatmap_scale() -> list[str]:
+    return HEATMAP_SCALES[st.session_state.get("tema", "claro")]
+
+
 def apply_theme(name: str) -> None:
     for key, value in TEMAS[name].items():
         st._config.set_option(f"theme.{key}", value)
@@ -231,14 +250,14 @@ def tab_benchmark() -> None:
     st.dataframe(summary, use_container_width=True, hide_index=True)
     quality = summary.melt(id_vars="Motor", value_vars=["F1-macro (categoria)", "F1-macro (prioridade)"], var_name="Alvo", value_name="F1")
     left, right = st.columns(2)
-    left.plotly_chart(px.bar(quality, x="Motor", y="F1", color="Alvo", barmode="group", title="F1-macro por motor"), use_container_width=True)
-    right.plotly_chart(px.bar(summary, x="Motor", y="Latência média (ms)", title="Latência média"), use_container_width=True)
-    st.plotly_chart(px.bar(summary, x="Motor", y="Custo por 1000 (US$)", title="Custo estimado por 1.000 chamados"), use_container_width=True)
+    left.plotly_chart(px.bar(quality, x="Motor", y="F1", color="Alvo", barmode="group", title="F1-macro por motor", color_discrete_sequence=chart_colors()), use_container_width=True)
+    right.plotly_chart(px.bar(summary, x="Motor", y="Latência média (ms)", title="Latência média", color_discrete_sequence=chart_colors()), use_container_width=True)
+    st.plotly_chart(px.bar(summary, x="Motor", y="Custo por 1000 (US$)", title="Custo estimado por 1.000 chamados", color_discrete_sequence=chart_colors()), use_container_width=True)
     engine = st.selectbox("Matriz de confusão do motor", list(report["motores"]))
     columns = st.columns(2)
     for column, target in zip(columns, ("categoria", "prioridade")):
         matrix = report["motores"][engine][target]["matriz_confusao"]
-        figure = px.imshow(matrix["matriz"], x=matrix["labels"], y=matrix["labels"], text_auto=True, labels={"x": "Previsto", "y": "Real"}, title=target.capitalize())
+        figure = px.imshow(matrix["matriz"], x=matrix["labels"], y=matrix["labels"], text_auto=True, labels={"x": "Previsto", "y": "Real"}, title=target.capitalize(), color_continuous_scale=heatmap_scale())
         column.plotly_chart(figure, use_container_width=True)
     analysis = report.get("discordancias")
     if analysis:
@@ -274,18 +293,22 @@ def tab_dashboard() -> None:
     left, right = st.columns(2)
     category = pd.Series(usage["por_categoria"], name="Chamados").rename_axis("Categoria").reset_index()
     priority = pd.Series(usage["por_prioridade"], name="Chamados").rename_axis("Prioridade").reset_index()
-    left.plotly_chart(px.bar(category, x="Categoria", y="Chamados", title="Volume por categoria"), use_container_width=True)
-    right.plotly_chart(px.bar(priority, x="Prioridade", y="Chamados", title="Volume por prioridade"), use_container_width=True)
+    left.plotly_chart(px.bar(category, x="Categoria", y="Chamados", title="Volume por categoria", color_discrete_sequence=chart_colors()), use_container_width=True)
+    right.plotly_chart(px.bar(priority, x="Prioridade", y="Chamados", title="Volume por prioridade", color_discrete_sequence=chart_colors()), use_container_width=True)
     series = pd.DataFrame(usage["serie_diaria"])
-    st.plotly_chart(px.line(series, x="dia", y="total", markers=True, title="Evolução diária"), use_container_width=True)
+    daily = px.bar(series, x="dia", y="total", title="Evolução diária", labels={"dia": "Dia", "total": "Chamados"}, color_discrete_sequence=chart_colors())
+    daily.update_xaxes(type="category")
+    st.plotly_chart(daily, use_container_width=True)
     gemini = usage["gemini"]
     st.subheader("Gemini")
-    llm_columns = st.columns(4)
+    llm_columns = st.columns(5)
     llm_columns[0].metric("Chamadas", gemini["chamadas"])
     llm_columns[1].metric("Tokens (entrada/saída)", f"{gemini['tokens_entrada']}/{gemini['tokens_saida']}")
     llm_columns[2].metric("Custo estimado (US$)", f"{gemini['custo_total_estimado']:.4f}")
-    latency = gemini["latencia_media_ms"]
-    llm_columns[3].metric("Latência média (ms)", f"{latency:.0f}" if latency else "—")
+    median_latency = gemini["latencia_mediana_ms"]
+    p95_latency = gemini["latencia_p95_ms"]
+    llm_columns[3].metric("Latência mediana (ms)", f"{median_latency:.0f}" if median_latency else "—")
+    llm_columns[4].metric("Latência p95 (ms)", f"{p95_latency:.0f}" if p95_latency else "—")
 
 
 def metrics_table(metrics: dict[str, Any] | None) -> pd.DataFrame:
