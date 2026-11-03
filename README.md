@@ -1,6 +1,26 @@
 # Classificador Inteligente de Chamados de Manutenção Industrial
 
+![Testes](https://github.com/RogerGuiSilva/classificador-chamados/actions/workflows/tests.yml/badge.svg)
+
 API-first com **motor híbrido**: modelo clássico (scikit-learn) + LLM (Gemini). Recebe a descrição de um chamado em português e devolve categoria (Mecânica, Elétrica, Automação), prioridade (Baixa, Média, Alta), confiança, explicação e ação sugerida. Compara, combina e audita os dois motores e aprende com correções humanas.
+
+## Capturas de tela
+
+Tela de classificação no modo Híbrido: com 88% de confiança, o ML respondeu sozinho (motor `ml`), sem chamar o Gemini. Abaixo de 65%, o chamado seria escalado:
+
+![Resultado de uma classificação no modo Híbrido, tema escuro](docs/img/classificar.png)
+
+Chamado vago ("Parada inesperada e o operador não sabe o motivo"): o ML ficou abaixo do limite de confiança, o chamado foi escalado ao Gemini (motor `ml+llm`) e o sistema recomenda revisão humana:
+
+![Chamado escalado ao Gemini com revisão humana recomendada](docs/img/escalado.png)
+
+Dashboard com o volume por categoria e prioridade, a taxa de correção e as revisões recomendadas:
+
+![Dashboard no tema escuro](docs/img/dashboard.png)
+
+Benchmark de ML, Gemini e híbrido no teste congelado:
+
+![Benchmark de ML, Gemini e híbrido](docs/img/benchmark.png)
 
 ## Arquitetura
 
@@ -16,6 +36,7 @@ ml/             geração do dataset, treino e benchmark
 ui/app.py       cliente Streamlit
 .streamlit/     tema inicial da interface (config.toml)
 tests/          pytest (Gemini sempre mockado)
+.github/        integração contínua: roda o pytest a cada push
 data/ models/ reports/
 iniciar.bat     (Windows) sobe a API e a interface com um clique
 parar.bat       (Windows) encerra os dois
@@ -74,8 +95,6 @@ Linux/macOS:
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-python -m ml.gerar_dataset
-python -m ml.train
 pytest
 uvicorn app.main:app --reload
 streamlit run ui/app.py
@@ -89,8 +108,6 @@ python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 copy .env.example .env
-python -m ml.gerar_dataset
-python -m ml.train
 pytest
 uvicorn app.main:app --reload
 ```
@@ -101,6 +118,8 @@ Em um segundo cmd (também com o venv ativado), na mesma pasta:
 python -m streamlit run ui/app.py
 ```
 
+Os modelos treinados (`models/*.joblib`), o dataset (`data/`) e o último relatório de benchmark (`reports/benchmark.json`) já vêm no repositório, então o projeto roda logo depois do `pip install`. Para retreinar do zero, use `python -m ml.train`.
+
 A API e a interface rodam ao mesmo tempo, cada uma em seu terminal. A API não tem página na raiz: abrir `http://localhost:8000` mostra `{"detail":"Not Found"}`, o que é esperado. Use `/docs` ou `/health`.
 
 ### Iniciar com um clique (Windows)
@@ -109,18 +128,21 @@ Com o ambiente já configurado, dê dois cliques em `iniciar.bat`, na raiz do pr
 
 ### Benchmark e dataset
 
-Benchmark sem Gemini: `python -m ml.benchmark --sem-gemini`. O conjunto de teste (`data/test_frozen.csv`) é congelado: `gerar_dataset` recusa sobrescrevê-lo sem `--forcar`.
+Os modelos treinados (`models/*.joblib`) e o último relatório (`reports/benchmark.json`) já vêm no repositório, então a API e a aba Benchmark funcionam sem treinar. Os passos `ml.gerar_dataset` e `ml.train` só são necessários para regerar o dataset e treinar do zero. Arquivos `.joblib` usam o formato pickle: só abra um que venha de uma fonte em que você confia.
+
+Benchmark sem Gemini: `python -m ml.benchmark --sem-gemini`. O conjunto de teste (`data/test_frozen.csv`) é congelado: `python -m ml.gerar_dataset` recusa sobrescrevê-lo sem `--forcar`, e com `--forcar` o teste é regenerado e os benchmarks anteriores deixam de valer. Como o dataset já está no repositório, não é preciso rodar esse comando para usar o projeto.
 
 ### Docker
 
+Com o Docker instalado, na raiz do projeto:
+
 ```bash
-docker compose run --rm api python -m ml.gerar_dataset
-docker compose run --rm api python -m ml.train
 docker compose up --build
 ```
 
-API em http://localhost:8000/docs e UI em http://localhost:8501. As instruções de Docker não foram testadas na máquina usada no desenvolvimento, que não tem o Docker instalado.
+API em http://localhost:8000/docs e UI em http://localhost:8501. Os modelos treinados (`models/`) e o último relatório do benchmark (`reports/benchmark.json`) já vêm no repositório, então não é preciso treinar antes. O `.env` é opcional: sem ele, ou sem `GEMINI_API_KEY`, o sistema funciona só com ML. Para usar o Gemini, copie `.env.example` para `.env` e preencha a chave. O banco de dados, os modelos e os relatórios ficam nas pastas `data/`, `models/` e `reports/` do seu computador, então não se perdem quando o container é apagado.
 
+Para parar: Ctrl+C e `docker compose down`. Para retreinar do zero: `docker compose run --rm api python -m ml.train`.
 ## Exemplos de curl
 
 ```bash
@@ -150,24 +172,24 @@ curl localhost:8000/benchmark
 
 ### Benchmark: 30 chamados do teste congelado
 
-Amostra de 30 dos 82 chamados sintéticos do conjunto de teste congelado, modelo `gemini-3.5-flash-lite`, 0 chamadas do Gemini substituídas pelo ML (relatório completo em `reports/benchmark.md`). Esta tabela foi gerada em 01/11/2026, antes dos retreinos descritos mais abaixo. Para atualizá-la com o modelo atual, rode `python -m ml.benchmark --amostra 30`.
+Amostra de 30 dos 82 chamados sintéticos do conjunto de teste congelado (a amostra é sempre a mesma, com semente fixa), modelo `gemini-3.5-flash-lite`. Relatório gerado em 02/11/2026, depois dos retreinos descritos mais abaixo (versão completa em `reports/benchmark.md`). Em 2 dos 30 chamados o Gemini falhou e a resposta do motor `llm` veio do ML, então a linha do Gemini mistura os dois. Para atualizar, rode `python -m ml.benchmark --amostra 30`.
 
 | Motor | Acc. categoria | F1 categoria | Acc. prioridade | F1 prioridade | Latência média | p95 | Custo/1000 (estimado) |
 |---|---|---|---|---|---|---|---|
-| ML (regressão logística) | 0,900 | 0,895 | 1,000 | 1,000 | 7,7 ms | 7,7 ms | US$ 0 |
-| Gemini | 0,967 | 0,965 | 0,933 | 0,939 | 4,5 s | 13,1 s | ver nota |
-| Híbrido | 0,900 | 0,895 | 1,000 | 1,000 | 7,7 ms | 7,7 ms | US$ 0 |
+| ML (retreinado) | 0,967 | 0,965 | 1,000 | 1,000 | 8,7 ms | 12,5 ms | US$ 0 |
+| Gemini | 0,967 | 0,965 | 0,900 | 0,910 | 1,9 s | 1,6 s | US$ 0,54 (estimado) |
+| Híbrido | 0,967 | 0,965 | 1,000 | 1,000 | 8,7 ms | 12,5 ms | US$ 0 |
 
-Com o conjunto completo (82 chamados), o ML obteve acurácia de categoria 0,939, F1-macro 0,940 e prioridade 1,000.
+Com o conjunto completo (82 chamados), o ML retreinado obteve acurácia de categoria 0,963, F1-macro 0,964 e prioridade 1,000.
 
 **Como ler esses números:**
 
-- **A amostra é pequena.** A diferença de categoria entre Gemini (29/30) e ML (27/30) é de 2 chamados e não permite concluir que um motor é melhor que o outro.
+- **A amostra é pequena.** ML e Gemini empatam em categoria (29/30 cada), e o ML fica à frente em prioridade (30/30 contra 27/30). Uma diferença de 3 chamados em 30 não permite concluir que um motor é melhor que o outro. Na rodada anterior (01/11, antes dos retreinos), o ML acertou 27/30 em categoria, contra 29/30 do Gemini.
 - **O híbrido foi idêntico ao ML porque nenhum chamado foi escalado:** o ML teve confiança igual ou acima de 0,65 em todos os 30. O benchmark, portanto, **não exercita** o roteador do modo híbrido. Em testes manuais com chamados ambíguos, o escalonamento ocorreu (ver abaixo).
 - **A prioridade do ML chega a 100%** porque, no dataset sintético, ela é determinada por palavras-chave dos templates. Esse número não deve ser lido como desempenho esperado em chamados reais, e os testes manuais abaixo confirmam isso.
-- **Latência do Gemini:** média de 4,5 s e p95 de 13,1 s no benchmark; em testes manuais, a maioria das chamadas levou cerca de 1,3 a 1,7 s. No Dashboard, com 10 chamadas de uso manual, a mediana foi de 1,4 s e o p95 de 47,7 s. O p95 alto vem de poucas chamadas lentas, de 46 a 48 s, provavelmente associadas a falhas e novas tentativas do provedor. Por isso o Dashboard mostra mediana e p95, e não a média, e a API passou a ter um orçamento total de tempo por chamado (`GEMINI_TOTAL_TIMEOUT_SECONDS`).
+- **Latência do Gemini:** média de 1,9 s e p95 de 1,6 s nesta rodada. A média ficou acima do p95, o que indica uma chamada isolada muito lenta que a média contabiliza e o p95 não alcança. Na rodada anterior, a média foi de 4,5 s e o p95 de 13,1 s. Em testes manuais, a maioria das chamadas levou cerca de 1,3 a 1,7 s. No Dashboard, com 10 chamadas de uso manual, a mediana foi de 1,4 s e o p95 de 47,7 s. O p95 alto vem de poucas chamadas lentas, de 46 a 48 s, provavelmente associadas a falhas e novas tentativas do provedor. Por isso o Dashboard mostra mediana e p95, e não a média, e a API passou a ter um orçamento total de tempo por chamado (`GEMINI_TOTAL_TIMEOUT_SECONDS`).
 - **Custo:** o valor é estimado pelo app a partir dos tokens e dos preços configurados (US$ 0,30 por milhão de tokens de entrada e US$ 2,50 de saída, valores de referência de outro modelo, não os do `gemini-3.5-flash-lite`). No plano gratuito não há cobrança.
-- O relatório também lista as discordâncias entre ML e Gemini (3 em 30). O critério de contagem do campo "quem acertou" ainda não foi verificado e não é usado aqui como resultado.
+- O relatório lista 3 discordâncias entre ML e Gemini e indica que o ML acertou nas três. O critério de contagem do campo "quem acertou" ainda não foi verificado, então isso não é usado aqui como conclusão.
 
 ### Teste manual com chamados escritos à mão
 
@@ -198,7 +220,7 @@ O algoritmo escolhido por validação cruzada mudou (categoria: `multinomial_nb`
 
 ### Exemplos manuais de roteamento híbrido
 
-Com o modelo `gemini-3.5-flash-lite`, o chamado "Motor da esteira desarmando a cada partida e linha parada" teve confiança de 57% no ML (Mecânica / Média), foi escalado ao Gemini, que classificou como Elétrica / Alta com 95%, e a resposta marcou revisão humana por divergência. A resposta esperada era Elétrica / Alta.
+Com o modelo `gemini-3.5-flash-lite`, o chamado "Motor da esteira desarmando a cada partida e linha parada" teve confiança de 57% no ML (Mecânica / Média), foi escalado ao Gemini, que classificou como Elétrica / Alta com 95%, e a resposta marcou revisão humana por divergência. A resposta esperada era Elétrica / Alta. Depois que esse chamado foi corrigido na interface e o modelo foi retreinado, o ML passou a classificá-lo sozinho, com 88% de confiança (Elétrica / Alta), como mostra a primeira captura de tela. Como o texto entrou no treino, esse resultado não mede generalização.
 
 Com o modelo `gemini-3.8-flash`, o chamado "esteira parando sozinha no turno da noite" teve confiança de 57% no ML (Mecânica), foi escalado ao Gemini, que classificou como Automação (CLP/sensores) com confiança de 80%, e a resposta marcou revisão humana por divergência.
 
@@ -254,17 +276,18 @@ Para descobrir quais modelos a sua chave enxerga, liste com o SDK (`client.model
 - Resultados do Gemini variam por modelo e versão. Reexecute o benchmark ao trocar `GEMINI_MODEL`. Modelos antigos são aposentados para contas novas, e os limites gratuitos mudam.
 - Enviar descrições de manutenção a uma API externa tem implicações de custo, privacidade e confidencialidade. Remova nomes, tags de ativos e dados sensíveis antes, ou avalie uma opção com contrato de dados adequado.
 - O cache do Gemini é em memória e se perde ao reiniciar a API.
+- Os modelos versionados (`models/*.joblib`) são arquivos pickle: só carregue arquivos desse tipo de fontes em que você confia.
 - Não há autenticação nem rate limit na API.
 - O ML explica por coeficientes (ou importâncias) de termos, uma aproximação para modelos não lineares.
 - A regra de segurança é por palavra-chave: um chamado preventivo que mencione "choque elétrico" sem negação também é elevado para Alta.
 - O botão de tema depende de uma API interna do Streamlit e vale para o servidor inteiro, e não por usuário.
-- As instruções de Docker não foram testadas na máquina de desenvolvimento.
+
 
 ## Próximos passos
 
 - Medir o limiar de confiança do roteador híbrido em um conjunto maior de chamados reais ou ambíguos, onde o ML escale ao Gemini, e medir custo e acurácia.
 - Melhorar a prioridade: coletar mais chamados reais rotulados por técnicos e avaliar um modelo próprio para prioridade, já que a categoria generaliza melhor que ela.
-- Repetir o benchmark com o conjunto de teste completo (82 chamados) e, se possível, com mais de uma amostra, e atualizar a tabela de resultados com o modelo retreinado.
+- Repetir o benchmark com o conjunto de teste completo (82 chamados) e, se possível, com mais de uma amostra.
 - Corrigir os preços de referência para os do modelo adotado e verificar o critério do campo "quem acertou" no relatório.
 - Validar com chamados reais anonimizados e um conjunto de teste rotulado por técnicos.
 - Autenticação, rate limit e fila para lotes grandes.
