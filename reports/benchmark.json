@@ -1,0 +1,286 @@
+{
+  "gerado_em": "2026-11-02T23:50:20+00:00",
+  "n_amostras": 30,
+  "limiar_confianca": 0.65,
+  "gemini_incluido": true,
+  "modelo_gemini": "gemini-3.5-flash-lite",
+  "motores": {
+    "ml": {
+      "categoria": {
+        "accuracy": 0.9666666666666667,
+        "f1_macro": 0.9645191409897292,
+        "f1_por_classe": {
+          "Mecânica": 0.9411764705882353,
+          "Elétrica": 0.9523809523809523,
+          "Automação": 1.0
+        },
+        "matriz_confusao": {
+          "labels": [
+            "Mecânica",
+            "Elétrica",
+            "Automação"
+          ],
+          "matriz": [
+            [
+              8,
+              0,
+              0
+            ],
+            [
+              1,
+              10,
+              0
+            ],
+            [
+              0,
+              0,
+              11
+            ]
+          ]
+        }
+      },
+      "prioridade": {
+        "accuracy": 1.0,
+        "f1_macro": 1.0,
+        "f1_por_classe": {
+          "Baixa": 1.0,
+          "Média": 1.0,
+          "Alta": 1.0
+        },
+        "matriz_confusao": {
+          "labels": [
+            "Baixa",
+            "Média",
+            "Alta"
+          ],
+          "matriz": [
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              15,
+              0
+            ],
+            [
+              0,
+              0,
+              8
+            ]
+          ]
+        }
+      },
+      "latencia_media_ms": 8.713896666692259,
+      "latencia_p95_ms": 12.509275015327127,
+      "custo_por_1000_usd": 0.0
+    },
+    "llm": {
+      "categoria": {
+        "accuracy": 0.9666666666666667,
+        "f1_macro": 0.9645191409897292,
+        "f1_por_classe": {
+          "Mecânica": 0.9411764705882353,
+          "Elétrica": 0.9523809523809523,
+          "Automação": 1.0
+        },
+        "matriz_confusao": {
+          "labels": [
+            "Mecânica",
+            "Elétrica",
+            "Automação"
+          ],
+          "matriz": [
+            [
+              8,
+              0,
+              0
+            ],
+            [
+              1,
+              10,
+              0
+            ],
+            [
+              0,
+              0,
+              11
+            ]
+          ]
+        }
+      },
+      "prioridade": {
+        "accuracy": 0.9,
+        "f1_macro": 0.9103313840155945,
+        "f1_por_classe": {
+          "Baixa": 1.0,
+          "Média": 0.8888888888888888,
+          "Alta": 0.8421052631578947
+        },
+        "matriz_confusao": {
+          "labels": [
+            "Baixa",
+            "Média",
+            "Alta"
+          ],
+          "matriz": [
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              12,
+              3
+            ],
+            [
+              0,
+              0,
+              8
+            ]
+          ]
+        }
+      },
+      "latencia_media_ms": 1923.8980321440197,
+      "latencia_p95_ms": 1617.9708250056137,
+      "custo_por_1000_usd": 0.5378333333333333
+    },
+    "hybrid": {
+      "categoria": {
+        "accuracy": 0.9666666666666667,
+        "f1_macro": 0.9645191409897292,
+        "f1_por_classe": {
+          "Mecânica": 0.9411764705882353,
+          "Elétrica": 0.9523809523809523,
+          "Automação": 1.0
+        },
+        "matriz_confusao": {
+          "labels": [
+            "Mecânica",
+            "Elétrica",
+            "Automação"
+          ],
+          "matriz": [
+            [
+              8,
+              0,
+              0
+            ],
+            [
+              1,
+              10,
+              0
+            ],
+            [
+              0,
+              0,
+              11
+            ]
+          ]
+        }
+      },
+      "prioridade": {
+        "accuracy": 1.0,
+        "f1_macro": 1.0,
+        "f1_por_classe": {
+          "Baixa": 1.0,
+          "Média": 1.0,
+          "Alta": 1.0
+        },
+        "matriz_confusao": {
+          "labels": [
+            "Baixa",
+            "Média",
+            "Alta"
+          ],
+          "matriz": [
+            [
+              7,
+              0,
+              0
+            ],
+            [
+              0,
+              15,
+              0
+            ],
+            [
+              0,
+              0,
+              8
+            ]
+          ]
+        }
+      },
+      "latencia_media_ms": 8.713896666692259,
+      "latencia_p95_ms": 12.509275015327127,
+      "custo_por_1000_usd": 0.0,
+      "pct_escalado_para_llm": 0.0
+    }
+  },
+  "falhas_gemini": 2,
+  "discordancias": {
+    "total": 3,
+    "quem_acertou": {
+      "ml": 3
+    },
+    "casos": [
+      {
+        "texto": "Painel esquentando e motor travando na linha 3",
+        "verdadeiro": {
+          "categoria": "Elétrica",
+          "prioridade": "Média"
+        },
+        "ml": {
+          "categoria": "Elétrica",
+          "prioridade": "Média",
+          "confianca": 0.718
+        },
+        "llm": {
+          "categoria": "Elétrica",
+          "prioridade": "Alta",
+          "confianca": 0.95
+        },
+        "quem_acertou": "ml"
+      },
+      {
+        "texto": "Operador informa que tomada industrial do setor de embalagem com aquecimento acima do normal nos terminais durante a partida",
+        "verdadeiro": {
+          "categoria": "Elétrica",
+          "prioridade": "Média"
+        },
+        "ml": {
+          "categoria": "Elétrica",
+          "prioridade": "Média",
+          "confianca": 0.844
+        },
+        "llm": {
+          "categoria": "Elétrica",
+          "prioridade": "Alta",
+          "confianca": 0.95
+        },
+        "quem_acertou": "ml"
+      },
+      {
+        "texto": "Painel esquentando e motor travando no setor de utilidades",
+        "verdadeiro": {
+          "categoria": "Elétrica",
+          "prioridade": "Média"
+        },
+        "ml": {
+          "categoria": "Elétrica",
+          "prioridade": "Média",
+          "confianca": 0.879
+        },
+        "llm": {
+          "categoria": "Elétrica",
+          "prioridade": "Alta",
+          "confianca": 0.95
+        },
+        "quem_acertou": "ml"
+      }
+    ]
+  }
+}

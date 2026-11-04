@@ -15,13 +15,13 @@ __pycache__/
 # Dados, Modelos e Bancos de Dados
 *.db
 data/*.db
-models/*.joblib
+
 
 # Logs, Temporários e Testes Locais
 *.log
 testa_*.py
 saida.txt
-reports/*.json
+
 
 # IDEs e Sistema Operacional
 .DS_Store
